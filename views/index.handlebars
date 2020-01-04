@@ -3,8 +3,8 @@
     <h1>Eat Da Burger</h1>
 </div>
 
-<div id="my-burgers">
-    <ul>
+<div>
+    <ul id="my-burgers">
         {{#each burgers}}
         <li>
             <p>
@@ -15,3 +15,30 @@
         {{/each}}
     </ul>
 </div>
+
+<br />
+<br />
+<br />
+
+<div id="add-burger">
+    <textarea id="burger-input" name="new-burger" cols="30" rows="10" placeholder="Enter a Burger"></textarea>
+    <button id="btn-addburger" type="submit">Submit</button>
+</div>
+
+<script>
+    $("#btn-addburger").click(function() {
+
+        let newBurger = {
+            burgerName: $("#burger-input").val().trim(),
+            isDevoured: false
+        };
+
+        $.ajax("/burger", {
+            type: "POST",
+            data: newBurger
+        }).then(function() {
+            console.log("Burger Added");
+            location.reload();
+        });
+    });
+</script>

@@ -4,8 +4,8 @@ body {
 
 #page-head {
     width: 30%;
-    text-align: center;
     display: block;
+    text-align: center;
     margin: auto;
     overflow: hidden;
     border: 5px groove #472626;
@@ -25,8 +25,14 @@ body {
 #my-burgers li {
     display: block;
     float: left;
-    clear: both;
     background-color: darkgoldenrod;
     border: 2px groove grey;
     padding: 0 5%;
+}
+
+#add-burger {
+    width: 30%;
+    display: block;
+    margin: 5% auto 0 auto;
+    text-align: center;
 }

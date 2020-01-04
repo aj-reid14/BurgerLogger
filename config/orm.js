@@ -33,12 +33,12 @@ const orm = {
         });
     },
     insertOne: function(table, columns, values, cb) {
-        const queryString = `INSERT INTO ${table} (${columns.toString()}) VALUES (?)`;
+        const queryString = `INSERT INTO ${table} (${columns.toString()}) VALUES ('${values[0]}', ${values[1]})`;
         console.log(queryString);
         
-        connection.query(queryString, values, function(err, result) {
+        connection.query(queryString, function(err, result) {
             if (err) throw err;
-            console.log(result);
+            // console.log(result);
             cb(result);
         });
     },
