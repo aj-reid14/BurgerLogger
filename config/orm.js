@@ -24,29 +24,32 @@ function objToSql(ob) {
   }
 
 const orm = {
-    selectAll: function(table) {
+    selectAll: function(table, cb) {
         const queryString = `SELECT * FROM ${table};`;
         connection.query(queryString, function(err, result) {
             if (err) throw err;
             console.log(result);
+            cb(result);
         });
     },
-    insertOne: function(table, columns, values) {
+    insertOne: function(table, columns, values, cb) {
         const queryString = `INSERT INTO ${table} (${columns.toString()}) VALUES (?)`;
         console.log(queryString);
         
         connection.query(queryString, values, function(err, result) {
             if (err) throw err;
             console.log(result);
+            cb(result);
         });
     },
-    updateOne: function(table, values, condition) {
+    updateOne: function(table, values, condition, cb) {
         const queryString = `UPDATE ${table} SET ${objToSql(values)} WHERE ${condition}`;
         console.log(queryString);
 
         connection.query(queryString, [value, condition], function(err, result) {
             if (err) throw err;
             console.log(result);
+            cb(result);
         });
     }
 }
