@@ -2,6 +2,31 @@ body {
     background-color: darkred;
 }
 
-h1 {
+#page-head {
+    width: 30%;
     text-align: center;
+    display: block;
+    margin: auto;
+    overflow: hidden;
+    border: 5px groove #472626;
+    background-color: whitesmoke;
+}
+
+#page-head img {
+    width: 100px;
+    height: 100px;
+    border-bottom: 10px groove grey;
+}
+
+#my-burgers {
+    text-align: left;
+}
+
+#my-burgers li {
+    display: block;
+    float: left;
+    clear: both;
+    background-color: darkgoldenrod;
+    border: 2px groove grey;
+    padding: 0 5%;
 }

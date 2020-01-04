@@ -1,1 +1,17 @@
-<h1>-EAT DA BURGER-</h1>
+<div id="page-head">
+    <img src="https://media0.giphy.com/media/l4pTnLd6WFyoatZq8/giphy.gif" alt="Dat Burger">
+    <h1>Eat Da Burger</h1>
+</div>
+
+<div id="my-burgers">
+    <ul>
+        {{#each burgers}}
+        <li>
+            <p>
+                {{this.id}}. {{this.burger_name}}
+                <button data-burgerID="{{this.id}}" class="btn-devour">Devour</button>
+            </p>
+        </li>
+        {{/each}}
+    </ul>
+</div>
