@@ -28,7 +28,7 @@ const orm = {
         const queryString = `SELECT * FROM ${table};`;
         connection.query(queryString, function(err, result) {
             if (err) throw err;
-            console.log(result);
+            // console.log(result);
             cb(result);
         });
     },

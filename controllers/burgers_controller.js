@@ -6,10 +6,10 @@ const router = express.Router();
 router.get("/", function (req, res) {
     burger.all(function (data) {
         const hbsObject = {
-            burgers: DataCue
+            burgers: data
         };
-        console.log(hbsObject);
-        // res.render("index", hbsObject);
+        // console.log(hbsObject);
+        res.render("index", hbsObject);
     });
 });
 
