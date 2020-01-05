@@ -73,11 +73,12 @@ function ConfigureButtons() {
             if ($(burgers[i]).attr("data-devoured").trim() === '1') {
                 let itemID = "burger-" + $(burgers[i]).attr("data-burgerID");
                 let buttonID = "devour-" + $(burgers[i]).attr("data-burgerID");
+
                 $(`#${itemID}`).css("background-color", "green");
                 $(`#${buttonID}`).attr("disabled", true);
                 $(`#${buttonID}`).text("YUM!");
-            }
-        }
+            };
+        };
     }
 
 </script>

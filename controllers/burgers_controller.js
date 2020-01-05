@@ -14,7 +14,7 @@ router.get("/", function (req, res) {
 });
 
 router.post("/burger", function (req, res) {
-    console.log(req.body);
+    // console.log(req.body);
     burger.insert(["burger_name", "devoured"], [req.body.burgerName, req.body.isDevoured], function (result) {
         res.json({id: result.insertId});
     });
@@ -22,7 +22,7 @@ router.post("/burger", function (req, res) {
 
 router.put("/burger/:id", function (req, res) {
     const condition = `id = ${req.params.id}`;
-    console.log("condition: ", condition);
+    // console.log("condition: ", condition);
 
     burger.update(
         {
