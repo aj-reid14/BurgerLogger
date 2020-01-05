@@ -9,7 +9,7 @@
         <li id="burger-{{this.id}}">
             <p>
                 {{this.id}}. {{this.burger_name}}
-                <button data-burgerID="{{this.id}}" class="btn-devour">Devour</button>
+                <button id="devour-{{this.id}}" data-burgerID="{{this.id}}" data-devoured="{{this.devoured}}" class="btn-devour">Devour</button>
             </p>
         </li>
         {{/each}}
@@ -29,6 +29,7 @@
 
     $(document).ready(function() {
     ConfigureButtons();
+    CheckDevouredBurgers();
 });
 
 function ConfigureButtons() {
@@ -63,6 +64,20 @@ function ConfigureButtons() {
                 location.reload();
             });
         });
+    }
+
+    function CheckDevouredBurgers() {
+        let burgers = $(".btn-devour");
+
+        for (let i = 0; i < burgers.length; i++) {
+            if ($(burgers[i]).attr("data-devoured").trim() === '1') {
+                let itemID = "burger-" + $(burgers[i]).attr("data-burgerID");
+                let buttonID = "devour-" + $(burgers[i]).attr("data-burgerID");
+                $(`#${itemID}`).css("background-color", "green");
+                $(`#${buttonID}`).attr("disabled", true);
+                $(`#${buttonID}`).text("YUM!");
+            }
+        }
     }
 
 </script>
