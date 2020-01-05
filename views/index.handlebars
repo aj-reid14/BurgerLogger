@@ -6,7 +6,7 @@
 <div>
     <ul id="my-burgers">
         {{#each burgers}}
-        <li>
+        <li id="burger-{{this.id}}">
             <p>
                 {{this.id}}. {{this.burger_name}}
                 <button data-burgerID="{{this.id}}" class="btn-devour">Devour</button>
@@ -26,19 +26,43 @@
 </div>
 
 <script>
-    $("#btn-addburger").click(function() {
 
-        let newBurger = {
-            burgerName: $("#burger-input").val().trim(),
-            isDevoured: false
-        };
+    $(document).ready(function() {
+    ConfigureButtons();
+});
 
-        $.ajax("/burger", {
-            type: "POST",
-            data: newBurger
-        }).then(function() {
-            console.log("Burger Added");
-            location.reload();
+function ConfigureButtons() {
+        $("#btn-addburger").click(function () {
+            let newBurger = {
+                burgerName: $("#burger-input").val().trim(),
+                isDevoured: false
+            };
+
+            $.ajax("/burger", {
+                type: "POST",
+                data: newBurger
+            }).then(function () {
+                console.log("Burger Added");
+                location.reload();
+            });
         });
-    });
+
+
+        $(".btn-devour").click(function () {
+            let thisID = $(this).attr("data-burgerID").trim();
+
+            let updatedBurger = {
+                isDevoured: true
+            };
+
+            $.ajax("/burger/" + thisID, {
+                type: "PUT",
+                data: updatedBurger
+            }).then(function () {
+                console.log("Burger Devoured!");
+                location.reload();
+            });
+        });
+    }
+
 </script>
